@@ -22,6 +22,8 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class calculator {
 
@@ -164,10 +166,26 @@ public class calculator {
 		});
 		
 		btnPow = new JButton("X\u00B2");
+		btnPow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				double x = Double.parseDouble(txtInput1.getText());
+				
+				String z = String.valueOf(High_Math.dSqr(x));
+				txtResult.setText(z);
+			}
+		});
 		btnPow.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnPow, "cell 0 2,grow");
 		
 		btnPowN = new JButton("X\u207F");
+		btnPowN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				double y = Double.parseDouble(txtInput2.getText());
+				String z = String.valueOf(High_Math.dPow(x,y));
+				txtResult.setText(z);
+			}
+		});
 		btnPowN.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnPowN, "cell 1 2,grow");
 		
@@ -175,35 +193,93 @@ public class calculator {
 		btnExponent.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnExponent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dPow(10,x));
+				txtResult.setText(z);
 			}
 		});
 		frmCalculator.getContentPane().add(btnExponent, "flowx,cell 2 2,grow");
 		
 		btnLog10 = new JButton("log(X)");
+		btnLog10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dLog10(x));
+				txtResult.setText(z);
+			}
+		});
 		btnLog10.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnLog10, "cell 3 2,grow");
 		
 		btnLoge = new JButton("ln(X)");
+		btnLoge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dLoge(x));
+				txtResult.setText(z);
+			}
+		});
 		btnLoge.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnLoge, "cell 4 2,grow");
 		
 		btnSine = new JButton("sin(X)");
+		btnSine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnSine.setToolTipText("input value in radian");
+			}
+		});
+		btnSine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {double x = Double.parseDouble(txtInput1.getText());
+			String z = String.valueOf(High_Math.dSin(x));
+			txtResult.setText(z);
+			}
+		});
 		btnSine.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnSine, "cell 0 3,grow");
 		
 		btnCosine = new JButton("cos(X)");
+		btnCosine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dCos(x));
+				txtResult.setText(z);
+			}
+		});
 		btnCosine.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnCosine, "cell 1 3,grow");
 		
 		btnTangent = new JButton("tan(X)");
+		btnTangent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dTan(x));
+				txtResult.setText(z);
+			}
+		});
 		btnTangent.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnTangent, "flowx,cell 2 3,grow");
 		
 		btn2Root = new JButton("\u221AX");
+		btn2Root.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dSqrt(x));
+				txtResult.setText(z);
+			}
+		});
 		btn2Root.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btn2Root, "cell 3 3,grow");
 		
 		btnNroot = new JButton("\u207F\u221AX");
+		btnNroot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				double y = Double.parseDouble(txtInput2.getText());
+				String z = String.valueOf(High_Math.dNrt(x,y));
+				txtResult.setText(z);
+			}
+		});
 		btnNroot.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnNroot, "flowx,cell 4 3,grow");
 		
@@ -254,6 +330,112 @@ public class calculator {
 		btnHexSub = new JButton("Hex Subtraction");
 		btnHexSub.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnHexSub, "cell 4 5,grow");
+		
+		
+		btnBinAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				int input_two = Integer.parseInt(txtInput2.getText(), 2);
+				String result = Binary_Hexadecimal.BinAdd(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+
+		btnBinSub.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				int input_two = Integer.parseInt(txtInput2.getText(), 2);
+				String result = Binary_Hexadecimal.BinSub(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+
+		btnHexAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				int input_two = Integer.parseInt(txtInput2.getText(), 16);
+				String result = Binary_Hexadecimal.HexAdd(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+
+		btnHexSub.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				int input_two = Integer.parseInt(txtInput2.getText(), 16);
+				String result = Binary_Hexadecimal.HexSub(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnBin2Dec.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Binary number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				String result = Binary_Hexadecimal.Bin2Dec(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnDec2Bin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Decimal number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText());
+				String result = Binary_Hexadecimal.Dec2Bin(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnHex2Dec.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Hex number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				String result = Binary_Hexadecimal.Hex2Dec(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnDec2Hex.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Decimal number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText());
+				String result = Binary_Hexadecimal.Dec2Hex(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnBin2Hex.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Binary number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				String result = Binary_Hexadecimal.Bin2Hex(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnHex2Bin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Binary number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				String result = Binary_Hexadecimal.Hex2Bin(input_one);
+				txtResult.setText(result);
+			}
+		});
+
 	}
 	
 	//Taking the String input from a text field and changing it to a Float
