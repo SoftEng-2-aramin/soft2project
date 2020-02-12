@@ -22,6 +22,8 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JLabel;
 import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class calculator {
 
@@ -192,6 +194,12 @@ public class calculator {
 		frmCalculator.getContentPane().add(btnLoge, "cell 4 2,grow");
 		
 		btnSine = new JButton("sin(X)");
+		btnSine.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				btnSine.setToolTipText("input value in radian");
+			}
+		});
 		btnSine.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {double x = Double.parseDouble(txtInput1.getText());
 			String z = String.valueOf(High_Math.dSin(x));
@@ -293,6 +301,112 @@ public class calculator {
 		btnHexSub = new JButton("Hex Subtraction");
 		btnHexSub.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnHexSub, "cell 4 5,grow");
+		
+		
+		btnBinAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				int input_two = Integer.parseInt(txtInput2.getText(), 2);
+				String result = Binary_Hexadecimal.BinAdd(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+
+		btnBinSub.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				int input_two = Integer.parseInt(txtInput2.getText(), 2);
+				String result = Binary_Hexadecimal.BinSub(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+
+		btnHexAdd.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				int input_two = Integer.parseInt(txtInput2.getText(), 16);
+				String result = Binary_Hexadecimal.HexAdd(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+
+		btnHexSub.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get inputs (as Binary numbers) from text fields and parse them into Integers
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				int input_two = Integer.parseInt(txtInput2.getText(), 16);
+				String result = Binary_Hexadecimal.HexSub(input_one, input_two);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnBin2Dec.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Binary number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				String result = Binary_Hexadecimal.Bin2Dec(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnDec2Bin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Decimal number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText());
+				String result = Binary_Hexadecimal.Dec2Bin(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnHex2Dec.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Hex number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				String result = Binary_Hexadecimal.Hex2Dec(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnDec2Hex.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Decimal number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText());
+				String result = Binary_Hexadecimal.Dec2Hex(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnBin2Hex.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Binary number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 2);
+				String result = Binary_Hexadecimal.Bin2Hex(input_one);
+				txtResult.setText(result);
+			}
+		});
+		
+		btnHex2Bin.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// get input (as a Binary number) from the 1st text field and parse it into an Integer
+				int input_one = Integer.parseInt(txtInput1.getText(), 16);
+				String result = Binary_Hexadecimal.Hex2Bin(input_one);
+				txtResult.setText(result);
+			}
+		});
+
 	}
 
 }
