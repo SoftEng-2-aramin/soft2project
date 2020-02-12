@@ -54,6 +54,7 @@ public class calculator {
 	private JButton btnBinAdd;
 	private JButton btnDivide;
 	private JButton btnBinSub;
+	double output;
 
 	/**
 	 * Launch the application.
@@ -112,27 +113,55 @@ public class calculator {
 		btnAdd = new JButton("+");
 		btnAdd.setFont(new Font("Tahoma", Font.BOLD, 20));
 		frmCalculator.getContentPane().add(btnAdd, "cell 0 1,grow");
+		btnAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output = StdCalc.add(GetSetDouble(txtInput1),GetSetDouble(txtInput2));
+				StringOut(output);
+			}
+		});
 		
 		btnMinus = new JButton("-");
 		btnMinus.setFont(new Font("Tahoma", Font.BOLD, 20));
 		frmCalculator.getContentPane().add(btnMinus, "cell 1 1,grow");
+		btnMinus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output = StdCalc.subtract(GetSetDouble(txtInput1),GetSetDouble(txtInput2));
+				StringOut(output);
+			}
+		});
 		
 		btnMultiply = new JButton("\u00D7");
 		btnMultiply.setFont(new Font("Tahoma", Font.BOLD, 20));
+		frmCalculator.getContentPane().add(btnMultiply, "flowx,cell 2 1,grow");
 		btnMultiply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				output = StdCalc.mulitiply(GetSetDouble(txtInput1),GetSetDouble(txtInput2));
+				StringOut(output);
 			}
 		});
-		frmCalculator.getContentPane().add(btnMultiply, "flowx,cell 2 1,grow");
+		
 		
 		btnDivide = new JButton("\u00F7");
 		btnDivide.setFont(new Font("Tahoma", Font.BOLD, 20));
 		frmCalculator.getContentPane().add(btnDivide, "cell 3 1,grow");
+		btnDivide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output = StdCalc.divide(GetSetDouble(txtInput1),GetSetDouble(txtInput2));
+				StringOut(output);
+			}
+		});
+		
 		
 		btnAbs = new JButton("|X|");
 		btnAbs.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnAbs.setAlignmentY(Component.TOP_ALIGNMENT);
 		frmCalculator.getContentPane().add(btnAbs, "cell 4 1,grow");
+		btnAbs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				output = StdCalc.absolute(GetSetDouble(txtInput1));
+				StringOut(output);
+			}
+		});
 		
 		btnPow = new JButton("X\u00B2");
 		btnPow.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -226,5 +255,18 @@ public class calculator {
 		btnHexSub.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnHexSub, "cell 4 5,grow");
 	}
+	
+	//Taking the String input from a text field and changing it to a Float
+			public double GetSetDouble(JTextField in) {
+				String input = in.getText();
+				double dinput = Double.parseDouble(input);
+				return dinput;
+			}
+			
+			//Taking the Float output from a math function and changing it to a String
+			public void StringOut(double out) {
+				String Soutput = Double.toString(out);
+				txtResult.setText(Soutput);
+			}
 
 }
