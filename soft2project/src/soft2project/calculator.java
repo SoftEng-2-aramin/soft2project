@@ -135,10 +135,26 @@ public class calculator {
 		frmCalculator.getContentPane().add(btnAbs, "cell 4 1,grow");
 		
 		btnPow = new JButton("X\u00B2");
+		btnPow.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				double x = Double.parseDouble(txtInput1.getText());
+				
+				String z = String.valueOf(High_Math.dSqr(x));
+				txtResult.setText(z);
+			}
+		});
 		btnPow.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnPow, "cell 0 2,grow");
 		
 		btnPowN = new JButton("X\u207F");
+		btnPowN.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				double y = Double.parseDouble(txtInput2.getText());
+				String z = String.valueOf(High_Math.dPow(x,y));
+				txtResult.setText(z);
+			}
+		});
 		btnPowN.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnPowN, "cell 1 2,grow");
 		
@@ -146,35 +162,87 @@ public class calculator {
 		btnExponent.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		btnExponent.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dPow(10,x));
+				txtResult.setText(z);
 			}
 		});
 		frmCalculator.getContentPane().add(btnExponent, "flowx,cell 2 2,grow");
 		
 		btnLog10 = new JButton("log(X)");
+		btnLog10.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dLog10(x));
+				txtResult.setText(z);
+			}
+		});
 		btnLog10.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnLog10, "cell 3 2,grow");
 		
 		btnLoge = new JButton("ln(X)");
+		btnLoge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dLoge(x));
+				txtResult.setText(z);
+			}
+		});
 		btnLoge.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnLoge, "cell 4 2,grow");
 		
 		btnSine = new JButton("sin(X)");
+		btnSine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {double x = Double.parseDouble(txtInput1.getText());
+			String z = String.valueOf(High_Math.dSin(x));
+			txtResult.setText(z);
+			}
+		});
 		btnSine.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnSine, "cell 0 3,grow");
 		
 		btnCosine = new JButton("cos(X)");
+		btnCosine.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dCos(x));
+				txtResult.setText(z);
+			}
+		});
 		btnCosine.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnCosine, "cell 1 3,grow");
 		
 		btnTangent = new JButton("tan(X)");
+		btnTangent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dTan(x));
+				txtResult.setText(z);
+			}
+		});
 		btnTangent.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnTangent, "flowx,cell 2 3,grow");
 		
 		btn2Root = new JButton("\u221AX");
+		btn2Root.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				String z = String.valueOf(High_Math.dSqrt(x));
+				txtResult.setText(z);
+			}
+		});
 		btn2Root.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btn2Root, "cell 3 3,grow");
 		
 		btnNroot = new JButton("\u207F\u221AX");
+		btnNroot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				double x = Double.parseDouble(txtInput1.getText());
+				double y = Double.parseDouble(txtInput2.getText());
+				String z = String.valueOf(High_Math.dNrt(x,y));
+				txtResult.setText(z);
+			}
+		});
 		btnNroot.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		frmCalculator.getContentPane().add(btnNroot, "flowx,cell 4 3,grow");
 		
