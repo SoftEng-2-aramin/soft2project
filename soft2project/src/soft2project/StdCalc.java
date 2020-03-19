@@ -4,6 +4,9 @@ import static java.lang.Math.abs;
 
 
 public class StdCalc {
+	
+	private StdCalc() {}
+	
 	public static double mulitiply(double a, double b) {
 		double c = a * b;
 		return c;

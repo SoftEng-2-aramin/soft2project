@@ -2,6 +2,8 @@ package soft2project;
 
 public class Binary_Hexadecimal {
 	
+	private Binary_Hexadecimal() {}
+	
 	public static String BinAdd(int input_one, int input_two){
 		int result_three = input_one + input_two;
 		// convert the result from integer back to binary and turn it to a string

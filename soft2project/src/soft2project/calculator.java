@@ -57,6 +57,7 @@ public class calculator {
 	private JButton btnDivide;
 	private JButton btnBinSub;
 	double output;
+	
 
 	/**
 	 * Launch the application.
@@ -64,12 +65,9 @@ public class calculator {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				try {
-					calculator window = new calculator();
-					window.frmCalculator.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
+				calculator window = new calculator();
+				window.frmCalculator.setVisible(true);
+				
 			}
 		});
 	}

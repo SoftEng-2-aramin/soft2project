@@ -1,6 +1,8 @@
 package soft2project;
 
 public class High_Math {
+
+	private High_Math() {}
 	
 public static double dSqrt(double x){
 	double z = Math.sqrt(x);
